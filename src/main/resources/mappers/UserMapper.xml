@@ -154,4 +154,12 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!-- Base_Column_List：选取一个完整的user对象 -->
+    select
+    <include refid="Base_Column_List"></include>
+    from imooc_mall_user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
 </mapper>
