@@ -5,7 +5,7 @@ import com.im.mall.exception.MallExceptionEnum;
 /**
  * 通用返回对象
  */
-public class ApiRestResponse <T> {
+public class ApiRestResponse <T>  {
     private Integer status;
     private String msg;
     private T data;  // 请求返回

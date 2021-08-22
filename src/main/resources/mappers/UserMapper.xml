@@ -160,6 +160,15 @@
     select
     <include refid="Base_Column_List"></include>
     from imooc_mall_user
-    where username = #{username,jdbcType=VARCHAR}
+    where username = #{userName,jdbcType=VARCHAR}
+  </select>
+<!--入参两个用map-->
+  <select id="selectLogin" parameterType="map" resultMap="BaseResultMap">
+    <!-- Base_Column_List：选取一个完整的user对象 -->
+    select
+    <include refid="Base_Column_List"></include>
+    from imooc_mall_user
+    where username = #{userName,jdbcType=VARCHAR}
+    and password = #{password}
   </select>
 </mapper>

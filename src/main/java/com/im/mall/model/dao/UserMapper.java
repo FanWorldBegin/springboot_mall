@@ -1,6 +1,7 @@
 package com.im.mall.model.dao;
 
 import com.im.mall.model.pojo.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -24,4 +25,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User selectByName(String userName);
+    // 两个参数需要入参指示
+    User selectLogin(@Param("userName") String userName, @Param("password") String password);
 }
