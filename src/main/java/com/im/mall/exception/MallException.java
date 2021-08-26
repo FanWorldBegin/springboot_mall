@@ -2,8 +2,9 @@ package com.im.mall.exception;
 
 /**
  * 统一MallException
+ * 继承 RuntimeException 不需要额外的try Catch
  */
-public class MallException extends Exception {
+public class MallException extends RuntimeException {
     private  final Integer code;
     private  final String message;
 

@@ -3,6 +3,8 @@ package com.im.mall.model.dao;
 import com.im.mall.model.pojo.Category;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CategoryMapper {
     /**
@@ -22,4 +24,13 @@ public interface CategoryMapper {
     int updateByPrimaryKeySelective(Category record);
 
     int updateByPrimaryKey(Category record);
+
+    Category selectByName(String name);
+
+    // 把所有目录都查出来
+    List<Category> selectList();
+
+    List<Category> selectCategoriesByParentID(Integer parentId);
+
+
 }
