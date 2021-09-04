@@ -3,11 +3,13 @@ package com.im.mall;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.im.mall.model.dao") // 找到mapper文件
 @EnableSwagger2
+@EnableCaching // 通知spring 打开缓存功能
 public class MallApplication {
 
     public static void main(String[] args) {

@@ -7,3 +7,6 @@
 root: admin
 
 http://localhost:8083/test
+
+启动 redis
+brew services start redis

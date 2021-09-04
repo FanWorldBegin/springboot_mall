@@ -32,7 +32,7 @@
         </javaClientGenerator>
         <!--生成对应表和类的名字-->
         <!--生成对应表及类名-->
-        <table schema="root" tableName="mall_cart" domainObjectName="Cart"
+        <table schema="root" tableName="imooc_mall_cart" domainObjectName="Cart"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

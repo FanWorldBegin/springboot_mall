@@ -13,9 +13,9 @@ import com.im.mall.request.UpdateCategoryReq;
 import com.im.mall.service.CategoryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,8 +67,6 @@ public class CategoryServiceImpl implements CategoryService {
             // mapper 返回的是 Category 类型
             Category categoryOld  = categoryMapper.selectByName(updateCategoryReq.getName());
 
-            int old = categoryOld.getId();
-            int newId = updateCategoryReq.getId();
             // 可以查到 且 库里传进来的id 和 和我传入的id 不一样 但是名字一样，说明冲突了
             if(categoryOld != null && !categoryOld.getId().equals(updateCategoryReq.getId())) {
                 throw new MallException(MallExceptionEnum.NAME_EXISTED);
@@ -112,9 +110,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     //  给前台用户展示
     @Override
-    public List<CategoryVO> listCategoryForCustomer() {
+    @Cacheable(value= "listCategoryForCustomer") // 存储的key值
+    public List<CategoryVO> listCategoryForCustomer(Integer parentId) {
         ArrayList<CategoryVO>  categoryVOList = new ArrayList<>();
-        recursivelyFindCategories(categoryVOList, 0);
+        recursivelyFindCategories(categoryVOList, parentId);
 
         return categoryVOList;
 
